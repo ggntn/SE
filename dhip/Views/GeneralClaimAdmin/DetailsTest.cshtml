@@ -1,0 +1,948 @@
+﻿@model dhip.Models.db.CustomerForm
+@{
+    ViewData["Title"] = "Details Test";
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Details Test</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/css/scrolling-nav.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="~/lib/DataTables-1.10.20/css/jquery.dataTables.min.css" />
+
+    <!-- Custom fonts for this theme -->
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="~/css/freelancer.min.css" rel="stylesheet">
+
+
+    @*<link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">*@
+    @*<link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css">*@
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="/GeneralClaimAdmin/Index">Dhiphaya Insurance Admin</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/GeneralClaimAdmin/Index">Generate Claim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/Accounts/Index">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="test">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 order-md-1">
+                    <h4 class="mb-3">ใบแจ้งความเสียหาย</h4>
+                    @*<form class="needs-validation" novalidate="">*@
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <label for="firstName">วันที่รับแจ้ง</label>
+                            <input type="text" class="form-control" id="date" placeholder="" value="@Model.date.ToShortDateString()" disabled="disabled" />
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="incidentdate">วันที่เกิดเหตุ</label>
+                            <input type="text" class="form-control" id="incidentDate" placeholder="" value="@Model.incidentDate.ToShortDateString()" disabled="disabled">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="incidentdate">เวลาที่เกิดเหตุ</label>
+                            <input type="text" class="form-control" id="timeIncidentDate" placeholder="" value="@Model.timeIncidentDate.ToShortTimeString()" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="phujang">ผู้แจ้ง</label>
+                            <input type="text" class="form-control" id="nameClaim" placeholder="test" value="@Model.nameClaim" disabled="disabled">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="phone">เบอร์โทรศัพท์</label>
+                            <input type="text" class="form-control" id="phoneClaim" placeholder="test" value="@Model.phoneClaim" disabled="disabled">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="email">อีเมล</label>
+                            <input type="email" class="form-control" id="emailClaim" placeholder="test" value="@Model.emailClaim" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="phutidtor">ผู้ติดต่อ</label>
+                            <input type="text" class="form-control" id="nameContact" placeholder="test" value="@Model.nameContact" disabled="disabled">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="phone">เบอร์โทรศัพท์</label>
+                            <input type="text" class="form-control" id="phoneContact" placeholder="test" value="@Model.phoneContact" disabled="disabled">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="email">อีเมล</label>
+                            <input type="email" class="form-control" id="emailContact" placeholder="test" value="@Model.emailContact" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="insuranceNo">เลขที่กรมธรรม์</label>
+                            <input type="text" class="form-control" id="insuranceNo" placeholder="123456789" value="@Model.insuranceNo " disabled="disabled">
+                        </div>
+                    </div>
+                    <br>
+                    <h4 class="mb-4">สถานที่เกิดเหตุ</h4>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="place">สถานที่</label>
+                            <input type="text" class="form-control" id="place" value="@Model.place" disabled="disabled">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="soi">ซอย</label>
+                            <input type="text" class="form-control" id="soi" value="@Model.soi" disabled="disabled">
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <label for="road">ถนน</label>
+                            <input type="text" class="form-control" id="road" value="@Model.road" disabled="disabled" />
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <label for="province">จังหวัด</label>
+                            <input type="text" class="form-control" id="province" value="@Model.province" disabled="disabled">
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <label for="causeLoss">ลักษณะบ้าน</label>
+                            <select class="custom-select d-block w-100" id="typeHouse" disabled="disabled">
+                                <option value="0">Choose...</option>
+                                <option value="1">บ้านเดี่ยว</option>
+                                <option value="2">ทาวน์เฮาส์</option>
+                                <option value="3">ห้องชุด</option>
+                                <option value="4">บ้านแฝด</option>
+                                <option value="5">อาคารพาณิชย์</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-8 mb-8 meterialChk" id="meterialChk">
+                            <label>บริเวณที่เสียหาย</label><br>
+                            <label class="checkbox-inline"><input type="checkbox" value="1" id="floor" disabled="disabled">งานพื้น</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="checkbox-inline"><input type="checkbox" value="2" id="wall" disabled="disabled">งานผนัง</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="checkbox-inline"><input type="checkbox" value="3" id="ceiling" disabled="disabled">งานฝ้า</label><br>
+                            <label class="checkbox-inline"><input type="checkbox" value="4" id="roof" disabled="disabled">งานมุงหลังคา</label>&nbsp;
+                            <label class="checkbox-inline"><input type="checkbox" value="5" id="glass" disabled="disabled">งานกระจก</label>&nbsp;&nbsp;
+                            <label class="checkbox-inline"><input type="checkbox" value="6" id="etc" disabled="disabled">อื่นๆ</label>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-4" id="meterialFloor">
+                            <label for="causeLoss">วัสดุงานพื้นที่เสียหาย</label>
+                            <select class="custom-select d-block w-100" id="meterialFloorSelect" disabled="disabled">
+                                <option value="0">Choose...</option>
+                                <option value="1">ปาร์เก้ไม้สัก</option>
+                                <option value="2">ปาร์เก้ไม้มะค่า</option>
+                                <option value="3">ปาร์เก้ไม้แดง</option>
+                                <option value="4">ปาร์เก้ไม้ประดู่</option>
+                                <option value="5">ปาร์เก้สำเร็จรูป</option>
+                                <option value="6">พื้นปูโมเสคไม้</option>
+                                <option value="7">พื้นกระเบื้อง</option>
+                                <option value="8">พื้นแผ่นยาง</option>
+                                <option value="9">
+                                    พื้นลามิเนต
+                                </option>
+                                <option value="10">
+                                    พื้นปูนขัดมัน
+                                </option>
+                                <option value="11">
+                                    พื้นปูนขัดหยาบ
+                                </option>
+                                <option value="12">
+                                    พื้นหินขัด
+                                </option>
+                                <option value="13">
+                                    ทาสี
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3 meterialAnsFloor">
+                            <label>จำนวน</label>
+                            <input type="text" class="form-control" id="piecesFloor" placeholder="100" value="" disabled="disabled">
+                        </div>
+                        <div class="col-md-3 mb-3 meterialAnsFloor">
+                            <label>หน่วย</label>
+                            <select class="custom-select d-block w-100" id="unitFloor" disabled="disabled">
+                                <option value="1">บาน</option>
+                                <option value="2">ตารางเมตร</option>
+                                <option value="3">เมตร</option>
+                                <option value="4">เหมา</option>
+                                <option value="5">ชิ้น</option>
+                                <option value="6">หน่วย</option>
+                                <option value="7">เปลี่ยน</option>
+                                <option value="8">เกล็ด</option>
+                                <option value="9">ซ่อมแซม</option>
+                                <option value="10">แผ่น</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-4" id="meterialWall">
+                            <label for="causeLoss">วัสดุงานผนังที่เสียหาย</label>
+                            <select class="custom-select d-block w-100" id="meterialWallSelect" disabled="disabled">
+                                <option value="0">Choose...</option>
+                                <option value="1">
+                                    ผนังก่ออิฐมอญ
+                                </option>
+                                <option value="2">
+                                    ผนังกระเบื้องเซรามิค
+                                </option>
+                                <option value="3">
+                                    ผนังอิฐบล็อก
+                                </option>
+                                <option value="4">
+                                    ผนังอิฐบล็อกช่องลม
+                                </option>
+                                <option value="5">
+                                    ผนังอิฐบล็อกกระจก
+                                </option>
+                                <option value="6">
+                                    ผนังอิฐบล็อกมวลเบา
+                                </option>
+                                <option value="7">
+                                    ผนังบุกระเบื้องเคลือบ
+                                </option>
+                                <option value="8">
+                                    ผนังก่ออิฐมอญ
+                                </option>
+                                <option value="9">
+                                    ผนังกระเบื้องเซรามิค
+                                </option>
+                                <option value="10">
+                                    ผนังอิฐบล็อก
+                                </option>
+                                <option value="11">
+                                    ผนังอิฐบล็อกช่องลม
+                                </option>
+                                <option value="12">
+                                    ผนังอิฐบล็อกกระจก
+                                </option>
+                                <option value="13">
+                                    ผนังอิฐบล็อกมวลเบา
+                                </option>
+                                <option value="14">
+                                    ผนังบุกระเบื้องเคลือบ
+                                </option>
+                                <option value="15">
+                                    ผนังก่ออิฐมอญ
+                                </option>
+                                <option value="16">
+                                    ผนังกระเบื้องเซรามิค
+                                </option>
+                                <option value="17">
+                                    ผนังอิฐบล็อก
+                                </option>
+                                <option value="18">
+                                    ผนังอิฐบล็อกช่องลม
+                                </option>
+                                <option value="19">
+                                    ผนังอิฐบล็อกกระจก
+                                </option>
+                                <option value="20">
+                                    ผนังอิฐบล็อกมวลเบา
+                                </option>
+                                <option value="21">
+                                    ผนังบุกระเบื้องเคลือบ
+                                </option>
+                                <option value="22">
+                                    ผนังบุกระเบื้องเคลือบ
+                                </option>
+                                <option value="23">
+                                    ผนังบุกระเบื้องเคลือบ
+                                </option>
+                                <option value="24">
+                                    ทาสี
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3 meterialAnsWall">
+                            <label>จำนวน</label>
+                            <input type="text" class="form-control" id="piecesWall" value="" disabled="disabled">
+                        </div>
+                        <div class="col-md-3 mb-3 meterialAnsWall">
+                            <label>หน่วย</label>
+                            <select class="custom-select d-block w-100" id="unitWall" disabled="disabled">
+                                <option value="1" selected="selected">บาน</option>
+                                <option value="2">ตารางเมตร</option>
+                                <option value="3">เมตร</option>
+                                <option value="4">เหมา</option>
+                                <option value="5">ชิ้น</option>
+                                <option value="6">หน่วย</option>
+                                <option value="7">เปลี่ยน</option>
+                                <option value="8">เกล็ด</option>
+                                <option value="9">ซ่อมแซม</option>
+                                <option value="10">แผ่น</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-4" id="meterialCeiling">
+                            <label for="causeLoss">วัสดุงานฝ้าที่เสียหาย</label>
+                            <select class="custom-select d-block w-100" id="meterialCeilingSelect" disabled="disabled">
+                                <option value="0" selected="selected">Choose...</option>
+                                <option value="1">
+                                    ฝ้าฉาบเรียบ
+                                </option>
+                                <option value="2">
+                                    ฝ้าทีบาร์
+                                </option>
+                                <option value="3">
+                                    ฝ้ายิปซั่มบอร์ด
+                                </option>
+                                <option value="4">
+                                    แผ่นกระเบื้องซีเมนต์เส้นใยแผ่นเรียบ
+                                </option>
+                                <option value="5">
+                                    ระแนงไม้
+                                </option>
+                                <option value="6">
+                                    ระแนงเหล็ก
+                                </option>
+                                <option value="7">
+                                    เพดานฉาบปูน
+                                </option>
+                                <option value="8">
+                                    ฝ้าเพดานอคูสติกบอร์ด
+                                </option>
+                                <option value="9">
+                                    ทาสี
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3 meterialAnsCeiling">
+                            <label>จำนวน</label>
+                            <input type="text" class="form-control" id="piecesCeiling" placeholder="100" value="" disabled="disabled">
+                        </div>
+                        <div class="col-md-3 mb-3 meterialAnsCeiling">
+                            <label>หน่วย</label>
+                            <select class="custom-select d-block w-100" id="unitCeiling" disabled="disabled">
+                                <option value="1" selected="selected">บาน</option>
+                                <option value="2">ตารางเมตร</option>
+                                <option value="3">เมตร</option>
+                                <option value="4">เหมา</option>
+                                <option value="5">ชิ้น</option>
+                                <option value="6">หน่วย</option>
+                                <option value="7">เปลี่ยน</option>
+                                <option value="8">เกล็ด</option>
+                                <option value="9">ซ่อมแซม</option>
+                                <option value="10">แผ่น</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-4" id="meterialRoof">
+                            <label for="causeLoss">วัสดุงานหลังคาที่เสียหาย</label>
+                            <select class="custom-select d-block w-100" id="meterialRoofSelect" disabled="disabled">
+                                <option value="0" selected="selected">Choose...</option>
+                                <option value="1">
+                                    หลังคากระเบื้องลอนคู่
+                                </option>
+                                <option value="2">
+                                    ครอบสันโค้งกระเบื้องลอนคู่
+                                </option>
+                                <option value="3">
+                                    ครอบตะเฆ่กระเบื้องลอนคู่
+                                </option>
+                                <option value="4">
+                                    ครอบเพิงแหงนกระเบื้องลอนคู่
+                                </option>
+                                <option value="5">
+                                    ชนฝากระเบื้องลอนคู่
+                                </option>
+                                <option value="6">
+                                    กระเบื้องคอนกรีต
+                                </option>
+                                <option value="7">
+                                    ครอบสันโค้งกระเบื้องคอนกรีต
+                                </option>
+                                <option value="8">
+                                    กระเบื้องโปร่งแสง
+                                </option>
+                                <option value="9">
+                                    แผ่นเหล็กรีดลอน
+                                </option>
+                                <option value="10">
+                                    สังกะสีลูกฟูก
+                                </option>
+                                <option value="11">
+                                    ทาสี
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3 meterialAnsRoof">
+                            <label>จำนวน</label>
+                            <input type="text" class="form-control" id="piecesRoof" placeholder="100" value="" disabled="disabled">
+                        </div>
+                        <div class="col-md-3 mb-3 meterialAnsRoof">
+                            <label>หน่วย</label>
+                            <select class="custom-select d-block w-100" id="unitRoof" disabled="disabled">
+                                <option value="1" selected="selected">บาน</option>
+                                <option value="2">ตารางเมตร</option>
+                                <option value="3">เมตร</option>
+                                <option value="4">เหมา</option>
+                                <option value="5">ชิ้น</option>
+                                <option value="6">หน่วย</option>
+                                <option value="7">เปลี่ยน</option>
+                                <option value="8">เกล็ด</option>
+                                <option value="9">ซ่อมแซม</option>
+                                <option value="10">แผ่น</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-4" id="meterialGlass">
+                            <label for="causeLoss">วัสดุงานกระจกที่เสียหาย</label>
+                            <select class="custom-select d-block w-100" id="meterialGlassSelect" disabled="disabled">
+                                <option value="0" selected="selected">Choose...</option>
+                                <option value="1">
+                                    กระจกแผ่นใส
+                                </option>
+                                <option value="2">
+                                    กระจกแผ่นฝ้า
+                                </option>
+                                <option value="3">
+                                    กระจกแผ่นสีชา
+                                </option>
+                                <option value="4">
+                                    กระจกบานเกล็ด
+                                </option>
+                                <option value="5">
+                                    กระจกนิรภัยเทมเปอร์ใส
+                                </option>
+                                <option value="6">
+                                    กระจกนิรภัยเทมเปอร์เขียว
+                                </option>
+                                <option value="7">
+                                    กระจกลามิเนต
+                                </option>
+                                <option value="8">
+                                    ทาสี
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3 meterialAnsGlass">
+                            <label>จำนวน</label>
+                            <input type="text" class="form-control" id="piecesGlass" placeholder="100" value="" disabled="disabled">
+                        </div>
+                        <div class="col-md-3 mb-3 meterialAnsGlass">
+                            <label>หน่วย</label>
+                            <select class="custom-select d-block w-100" id="unitGlass" disabled="disabled">
+                                <option value="1" selected="selected">บาน</option>
+                                <option value="2">ตารางเมตร</option>
+                                <option value="3">เมตร</option>
+                                <option value="4">เหมา</option>
+                                <option value="5">ชิ้น</option>
+                                <option value="6">หน่วย</option>
+                                <option value="7">เปลี่ยน</option>
+                                <option value="8">เกล็ด</option>
+                                <option value="9">ซ่อมแซม</option>
+                                <option value="10">แผ่น</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8 mb-4" id="meterialEtc">
+                            <label for="causeLoss">กรุณาระบุ งานอื่นๆ</label>
+                            <textarea type="text" rows="3" cols="45" class="form-control" id="meterialEtcSelect" value="" disabled="disabled">@Model.meterialEtcSelect</textarea>
+                        </div>
+                        @*<div class="meterialAnsEtc">
+                                <label>*ระบุจำนวน หน่วย</label>
+                                <textarea type="text" rows="3" cols="45" class="form-control" id="piecesEtc" disabled="disabled">
+                                @Model.piecesEtc
+                            </textarea>
+                            </div>*@
+                    </div>
+
+                    <br />
+                    <h4 class="mb-3">ลักษณะความเสียหาย</h4>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="causeLoss">ลักษณะความเสียหาย</label>
+                            <select class="custom-select d-block w-100" id="causeIncident" required="" disabled="disabled">
+                                <option value="0">Choose...</option>
+                                <option value="1">น้ำท่วม</option>
+                                <option value="2">ภัยเนื่องจากน้ำ</option>
+                                <option value="3">ภัยลมพายุ</option>
+                                <option value="4">อัคคีภัย</option>
+                                <option value="5">ไฟฟ้าลัดวงจาร</option>
+                                <option value="6">ภัยจากเครื่องใช้ไฟฟ้า</option>
+                                <option value="7">ภัยจากยวดยานภาหนะ</option>
+                                <option value="8">ภัยแผ่นดินไหว</option>
+                                <option value="9">ภัยฟ้าผ่า</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="causeLossDetail">รายละเอียดความเสียหายของทรัพย์สิน</label>
+                            <textarea rows="7" cols="50" type="text" class="form-control" id="causeIncidentDetail" disabled="disabled">@Model.causeIncidentDetail</textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="lossPrice">ประมาณการค่าเสียหาย</label>
+                            <div class="form-group">
+                                <input type="number" class="form-control" id="incidentPrice" disabled="disabled" value="@Model.incidentPrice">
+                            </div>
+                        </div>
+                        <div class="">
+                            <br>
+                            <br>
+                            <text>บาท</text>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <h2>Logistic Regression</h2>
+            <div class="container">
+                <div class="row">
+                    @*<div class="col-lg-8 mx-auto">*@
+
+                    <div class="col-md-3 mb-3">
+                        <label>X-Insured</label>
+                        <input type="text" class="form-control" id="xInsured">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>X-Water Damage</label>
+                        <input type="text" class="form-control" id="xWater">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>X-Fire Damage</label>
+                        <input type="text" class="form-control" id="xFire">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>X-Flood Damage</label>
+                        <input type="text" class="form-control" id="xFlood">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>X-North East</label>
+                        <input type="text" class="form-control" id="xNorth">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>X-Town House</label>
+                        <input type="text" class="form-control" id="xTown">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>X-Single House</label>
+                        <input type="text" class="form-control" id="xSin">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>X-Commercial Building</label>
+                        <input type="text" class="form-control" id="xCos">
+                    </div>
+                    @*</div>*@
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <button id="sumX" onclick="LogisRegress();" class="btn-info">Summary Logistic Regression</button>
+                        @*<input type="text" class="form-control" id="summaryX" disabled="disabled" />*@
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        @*<button id="sumX" onclick="LogisRegress();" class="btn-info">Summary Logistic Regression</button>*@
+                        <input type="text" class="form-control" id="summaryX" disabled="disabled" />
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2>Generate Claim</h2>
+                        <table id="table_id" class="display">
+                            <thead>
+                                <tr>
+                                    <th>Meterial</th>
+                                    <th>Meterial Cost</th>
+                                    <th>Labor Cost</th>
+                                    <th>Unit</th>
+                                    <th>Quantity</th>
+                                    <th>Summary</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <button id="submit" onclick="Export();" class="btn-info" style="float: right;">Summary </button>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control" id="summary" disabled="disabled" style="float: right;" />
+                </div>
+            </div>
+            <hr class="mb-4">
+            @*<button id="submit" onclick="Export();" class="btn-info">Export</button>*@
+        </div>
+    </section>
+    <section id="about">
+    </section>
+
+
+
+
+
+    <!-- Plugin JavaScript -->
+    @* <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>*@
+    @*<script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>*@
+    <!--===============================================================================================-->
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/js/main.js"></script>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    @*<script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>*@
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="~/js/scrolling-nav.js"></script>
+
+
+    @*datatable*@
+    <script type="text/javascript" src="~/lib/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" src="~/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="~/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="~/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="~/js/vfs_fonts.js"></script>
+    <script type="text/javascript" src="~/js/jszip.min.js"></script>
+    <script type="text/javascript" src="~/js/pdfmake.min.js"></script>
+    <script>
+        var datatable;
+
+        $(document).ready(function () {
+
+        $("#meterialFloor").hide();
+        $("#meterialWall").hide();
+        $("#meterialCeiling").hide();
+        $("#meterialRoof").hide();
+        $("#meterialGlass").hide();
+        $("#meterialEtc").hide();
+        $(".meterialAnsFloor").hide();
+        $(".meterialAnsWall").hide();
+        $(".meterialAnsCeiling").hide();
+        $(".meterialAnsRoof").hide();
+        $(".meterialAnsGlass").hide();
+        //$(".meterialAnsEtc").hide();
+        $('#typeHouse').val(@Model.typeHouse);
+
+            if (@Model.causeIncident != 0) {
+                $('#causeIncident').val(@Model.causeIncident);
+            }
+
+
+            if (@Model.floor != 0) {
+                $("#meterialFloor").show();
+                $(".meterialAnsFloor").show();
+                $('#floor').prop('checked', true);
+                $('#meterialFloorSelect').val(@Model.meterialFloorSelect);
+                $('#piecesFloor').val(@Model.piecesFloor);
+                $('#unitFloor').val(@Model.unitFloor)
+            }
+            if (@Model.wall != 0) {
+                $("#meterialWall").show();
+                $(".meterialAnsWall").show();
+                $('#wall').prop('checked', true);
+                $('#meterialWallSelect').val(@Model.meterialWallSelect);
+                $('#piecesWall').val(@Model.piecesWall);
+                $('#unitWall').val(@Model.unitWall)
+            }
+            if (@Model.ceiling != 0) {
+                $("#meterialCeiling").show();
+                $(".meterialAnsCeiling").show();
+                $('#ceiling').prop('checked', true);
+                $('#meterialCeilingSelect').val(@Model.meterialCeilingSelect);
+                $('#piecesCeiling').val(@Model.piecesCeiling);
+                $('#unitCeiling').val(@Model.unitCeiling)
+            }
+            if (@Model.roof != 0) {
+                $("#meterialRoof").show();
+                $(".meterialAnsRoof").show();
+                $('#roof').prop('checked', true);
+                $('#meterialRoofSelect').val(@Model.meterialRoofSelect);
+                $('#piecesRoof').val(@Model.piecesRoof);
+                $('#unitRoof').val(@Model.unitRoof)
+            }
+            if (@Model.glass !=0) {
+                $('#glass').prop('checked', true);
+                 $("#meterialGlass").show();
+                $(".meterialAnsGlass").show();
+                $('#meterialGlassSelect').val(@Model.meterialGlassSelect);
+                 $('#piecesGlass').val(@Model.piecesGlass);
+                 $('#unitGlass').val(@Model.unitGlass);
+            }
+           if (@Model.etc != 0) {
+
+                 $('#etc').prop('checked', true);
+                 $("#meterialEtc").show();
+                 //$(".meterialAnsEtc").show();
+                 //$('#piecesEtc').val( );
+
+            }
+             //var houseId = @Model.typeHouse
+           GetDataTable();
+           LogisRegress();
+
+
+           //$('#table_id tbody').on('click', 'tr', function () {
+           //    $(this).toggleClass('selected');
+
+           //    var dataArr = [];
+           //     var rows = $('tr.selected');
+           //     var rowData = datatable.rows( rows ).data();
+           //    $.each($(rowData), function (key, value) {
+
+           //        var guy = datatable.cell(rows, 4).data();
+           //        var guy2 = datatable.cell(rows, 1).data();
+           //        var guy3 =datatable.cell(rows, 2).data();
+           //        console.log(guy)
+           //        console.log(guy2)
+           //        console.log(guy3)
+    	      //      dataArr.push(value["name"]);
+           //      });
+           //     console.log(dataArr);
+           //});
+
+        });
+
+        $(document).on('mouseover', '#table_id tr', function() {
+            current_row = this;
+            if (isNaN(parseFloat($(current_row).find(".input1").val())) != true) {
+               console.log(current_row)
+                var input = parseFloat($(current_row).find(".input1").val());
+                var a = datatable.cell(current_row, 1).data();
+                var b = datatable.cell(current_row, 2).data();
+                //console.log(a)
+                //console.log(b)
+                var sum = input * (a + b);
+                //console.log(sum)
+               console.log(parseFloat($(current_row).find(".input1").val()))
+               parseFloat($(current_row).find(".sum").val(sum));
+            }
+            //var rows = datatable.rows({ selected: true }).indexes();
+            //console.log(datatable.cells( rows, 5 ).data());
+        });
+        // $(document).on('mouseover', '#table_id tr', function() {
+        //     current_row = this;
+        //     console.log(typeof parseFloat($(current_row).find(".input1").val()))
+        //    if ( isNaN(parseFloat($(current_row).find(".input1").val())) != true) {
+        //        alert(1)
+        //        console.log(parseFloat($(current_row).find(".input1").val()))
+        //    }
+        //     else
+        //        alert(2)
+        //});
+
+        function LogisRegress() {
+            if ($("#xInsured").val() != "" || $("#xWater").val() != "" ||
+                $("#xFire").val() !="" || $("#xFlood").val() !=""|| $("#xNorth").val()!="" ||
+                $("#xTown").val() !="" || $("#xSin").val() !="" || $("#xCos").val() !="") {
+
+                var result = (((-1.21) * Math.pow(10, -4)) * parseInt($("#xInsured").val()));
+                result = result + ((-1.33) * parseInt($("#xWater").val()));
+                result = result + (((-7.26) * Math.pow(10, -1)) * parseInt($("#xFire").val()));
+                result = result + (((-6.63) * Math.pow(10, -1)) * parseInt($("#xFlood").val()));
+                result = result + (((-6.76) * Math.pow(10, -1)) * parseInt($("#xNorth").val()));
+                result = result + (((-6.08) * Math.pow(10, -1)) * parseInt($("#xTown").val()));
+                result = result + (((-5.42) * Math.pow(10, -1)) * parseInt($("#xSin").val()));
+                result = result + ((1.02) * parseInt($("#xCos").val()));
+                result = result+5.44
+
+                if (result >= 0.5) {
+                     $("#summaryX").val("NO Survey")
+                }
+                else
+                    $("#summaryX").val("Yes Survey")
+            }
+        }
+
+
+
+        function GetDataTable() {
+            var buttonCommon = {
+        exportOptions: {
+            format: {
+                body: function ( data, row, column, node ) {
+                    // Strip $ from salary column to make it numeric
+                    //console.log(row)
+                    //if (isNaN(parseFloat($(row).find("input.input1").val())) != true) {
+                    //    console.log(parseFloat($(row).find("input.input1").val()))
+                    //    //console.log(isNaN(parseFloat($(current_row).find(".input1").val()))
+                    //    //console.log(parseFloat($(row).find(".input1").val()))
+                    //};
+                    ////console.log(parseFloat($(row).find(".input1").val()))
+                    //console.log(data)
+                    //console.log($(data).is("input"))
+                    //console.log($(data).find('input.input1').val())
+                    var val = $(node).find('input').val();
+                    console.log(val)
+                    return $(data).is("input") ?
+                        $(node).find('input').val():
+                        data;
+                }
+            }
+        }
+    };
+            datatable = $('#table_id').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    
+            $.extend( true, {}, buttonCommon, {
+                extend: 'excelHtml5'
+            } ),
+            // $.extend( true, {}, buttonCommon, {
+            //    extend: 'print'
+            //} ),
+        ],
+                ajax: {
+                    url: '/GeneralClaimAdmin/GetListData',
+                    type: 'GET',
+                    data: function ( d ) {
+                        d.houseId = @Model.typeHouse;
+
+                    },
+                    dataSrc: function (data) {
+                         console.log(data)
+                        return data;
+                    },
+
+                },
+                columnDefs: [
+     //             {
+     //    targets: 0,
+     //    render: function (data, type, row) {
+     //        if (type === 'display') {
+     //            return '<input type="checkbox" class="editor-active">';
+     //        }
+     //        return data;
+     //    },
+     //    className: "dt-body-center",
+     //    orderable: false,
+     //    searchable: false
+     //},
+                    // {
+                    //    targets: 4,
+                    //    data: null,
+                    //    defaultContent: "<input>"
+                    //},
+                    //  {
+                    //    targets: 5,
+                    //    data: null,
+                    //    defaultContent: "<input>"
+                    //},
+
+
+                ],
+                columns : [
+                {data: 'name'},
+                {data: 'price'},
+                {data: 'laborCost'},
+                { data: 'unit' },
+                    {
+                        data: '',
+                        render: function (data, type, row, meta) {
+                            var input = '<input class="input1" value=""></input>';
+                            return input;
+                        }
+                    },
+                    {
+                        data: '',
+                        render: function (data, type, row, meta) {
+                            var input = '<input class="sum" value=""></input>';
+                            return input;
+                        }
+                    }
+                ]
+            });
+        }
+
+        function Export() {
+            var sum = 0;
+            var oTable = $('#table_id').dataTable();
+            var rowcollection = oTable.$(".sum", {"page": "all"});
+            rowcollection.each(function(index,elem){
+                var checkbox_value = $(elem).val();
+                if (isNaN(parseFloat(checkbox_value)) != true)
+		        {sum += parseFloat(checkbox_value);}
+            });
+            $('#summary').val(sum);
+            //console.log(checkbox_value)
+            //Do something with 'checkbox_value'
+
+            //alert(sum)
+             //console.log(sum)
+            //alert(datatable.rows('.sum').data().val());
+
+
+            //parseFloat($(current_row).find(".input1").val());
+            //var data = datatable.column(5).data().toArray();
+            ////var length = data.length();
+            //var sum="";
+            //for (var i = 0; i < data.length; i++) {
+            //    console.log(parseFloat($(i).find(".sum").val()))
+            //    //console.log($(data[i]).val());
+            //    //sum = sum + $(data[i]).val();
+            //}
+
+        //    datatable.rows().eq(0).each( function ( index ) {
+        //        var row = datatable.row(index);
+        //        console.log(parseFloat($(row).find(".sum").val()))
+        //    //var data = row.data();
+        //    //console.log(data)
+        //} );
+        }
+    </script>
+
+</body>
+
+</html>
+@section Scripts{
+    @*<script>
+            $(document).ready(function () {
+                $('#table_id').DataTable();
+            });
+        </script>*@
+}

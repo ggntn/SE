@@ -1,0 +1,400 @@
+﻿
+@{
+    ViewData["Title"] = "Index Customer";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Create</title>
+
+    <!-- Custom fonts for this theme -->
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="~/css/freelancer.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Dhiphaya Insurance</a>
+            <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/GeneralClaimCustomer/Index">Generate Claim</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Accounts/Index">Log Out</a>
+                    </li>
+                    @*<li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
+                        </li>*@
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Masthead -->
+
+
+    <div class="container">
+        <div class="py-5 text-center">
+            @*<img class="d-block mx-auto mb-4" src="./Checkout example · Bootstrap_files/bootstrap-solid.svg" alt="" width="72" height="72">*@
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h2>ตัวอย่างแบบฟอร์มผู้เอาประกันภัย</h2>
+            <p class="lead">แบบฟอร์มการเอาประกันภัยทั้ง 4 แบบ</p>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">ใบแจ้งความเสียหาย</h4>
+                <form class="needs-validation" novalidate="">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <label for="firstName">วันที่รับแจ้ง</label>
+                            <input type="date" class="form-control" id="date" placeholder="" value="" required="">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="incidentdate">วันที่เกิดเหตุ</label>
+                            <input type="date" class="form-control" id="incidentDate" placeholder="" value="" required="">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="incidentdate">เวลาที่เกิดเหตุ</label>
+                            <input type="time" class="form-control" id="timeIncidentDate" placeholder="" value="" required="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="phujang">ผู้แจ้ง</label>
+                            <input type="text" class="form-control" id="nameClaim" placeholder="test" value="" required="">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="phone">เบอร์โทรศัพท์</label>
+                            <input type="text" class="form-control" id="phoneClaim" placeholder="test" value="" required="">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="email">อีเมล</label>
+                            <input type="email" class="form-control" id="emailClaim" placeholder="test" value="" required="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="phutidtor">ผู้ติดต่อ</label>
+                            <input type="text" class="form-control" id="nameContact" placeholder="test" value="" required="">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="phone">เบอร์โทรศัพท์</label>
+                            <input type="text" class="form-control" id="phoneContact" placeholder="test" value="" required="">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="email">อีเมล</label>
+                            <input type="email" class="form-control" id="emailContact" placeholder="test" value="" required="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="insuranceNo">เลขที่กรมธรรม์</label>
+                            <input type="text" class="form-control" id="insuranceNo" placeholder="123456789" value="" required="">
+                        </div>
+                    </div>
+                    <br>
+                    <h4 class="mb-4">สถานที่เกิดเหตุ</h4>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="place">สถานที่</label>
+                            <input type="text" class="form-control" id="place" placeholder="KMUTT" value="" required="">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="soi">ซอย</label>
+                            <input type="text" class="form-control" id="soi" placeholder="ประชาอุทิศ 40" value="" required="">
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <label for="road">ถนน</label>
+                            <input type="text" class="form-control" id="road" placeholder="ประชาอุทิศ" value="" required="">
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <label for="province">จังหวัด</label>
+                            <input type="text" class="form-control" id="province" placeholder="กรุงเทพ" value="" required="">
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <label for="causeLoss">ลักษณะบ้าน</label>
+                            <select class="custom-select d-block w-100" id="typeHouse" required="">
+                                <option value="">Choose...</option>
+                                <option>บ้านเดี่ยว</option>
+                                <option>ทาวน์เฮาส์</option>
+                                <option>ห้องชุด</option>
+                                <option>บ้านแฝด</option>
+                                <option>อาคารพาณิชย์</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+                    <h4 class="mb-3">ลักษณะความเสียหาย</h4>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="causeLoss">ลักษณะความเสียหาย</label>
+                            <select class="custom-select d-block w-100" id="causeIncident" required="">
+                                <option value="">Choose...</option>
+                                <option>Water Damage</option>
+                                <option>Test A</option>
+                                <option>Test B</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="causeLossDetail">รายละเอียดความเสียหายของทรัพย์สิน</label>
+                            <textarea rows="7" cols="50" type="text" class="form-control" id="causeIncidentDetail">
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="lossPrice">ประมาณการค่าเสียหาย</label>
+                            <div class="form-group">
+                                <input type="number" class="form-control" id="incidentPrice">
+                            </div>
+                        </div>
+                        <div class="">
+                            <br>
+                            <br>
+                            <text>บาท</text>
+                        </div>
+                    </div>
+
+
+                    <h4 class="mb-4">รายละเอียดของทรัพย์สิน</h4>
+                    <div class="row">
+                        <div class="">
+                            <p>
+                                <label for="website">3.1 ท่านเป็นเจ้าของอาคารหรือทรัพย์สินที่ได้รับความเสียหายหรือไม่ ถ้าไม่ใช่ โปรดระบุว่าท่านเป็นผู้เช่า หรือ ผู้อาศัย หรืออื่นๆ</label>
+                                <input type="radio" name="IsPlaceOwner" value="Y">ใช่
+                                <input type="radio" name="IsPlaceOwner" value="N" checked="checked">ไม่ใช่
+                                <input class="inputText" type="text" id="IsPlaceOwner_remark" name="IsPlaceOwner_remark">
+                            </p>
+                            <p>
+                                <label for="website">3.2 ท่านเป็นเจ้าของอาคารหรือทรัพย์สินที่ได้รับความเสียหายแต่เพียงผู้เดียวหรือไม่ ถ้าไม่ใช่ โปรดระบุผู้มีกรรมสิทธิ์ร่วมหรือผู้มีส่วนได้เสียอื่นๆ (เช่น ผู้กู้ร่วม หรือ เจ้าของร่วม) </label>
+                                <input type="radio" name="IsIndividual" value="Y">ใช่
+                                <input type="radio" name="IsIndividual" value="N" checked="checked">ไม่ใช่
+                                <input class="inputText" type="text" id="IsIndividual_remark" name="IsIndividual_remark">
+                            </p>
+                            <p>
+                                <label for="website">3.3 ช่วงเวลาเกิดเหตุ อาคารหรือสถานที่เอาประกันภัยถูกทิ้งร้างเกิน 60 วันหรือไม่ </label><br>
+                                <input type="radio" name="IsDisused" value="Y">ใช่
+                                <input type="radio" name="IsDisused" value="N" checked="checked">ไม่ใช่
+                            </p>
+                            <p>
+                                <label for="website">3.4 สถานที่หรือทรัพย์สินที่เอาประกันภัยไว้ เคยสูญเสียหรือความเสียหายโดยไฟไหม้หรือภัยพิบัติอื่นๆ ที่เอาประกันภัยไว้ภายใต้กรมธรรม์ประกันภัยหรือไม่ ถ้าใช่ โปรดระบุภัยและชื่อบริษัทรับประกันภัย </label>
+                                <input type="radio" name="IsClaimBefore" value="Y">ใช่
+                                <input type="radio" name="IsClaimBefore" value="N" checked="checked">ไม่ใช่
+                                <input class="inputText" type="text" id="IsClaimBefore_remark" name="IsClaimBefore_remark">
+                            </p>
+                            <p>
+                                <label for="website">3.5 ณ.เวลาที่เกิดเหตุครั้งนี้ ท่านมีกรมธรรม์ประกันภัยที่ให้ความคุ้มครองทรัพย์สินฉบับอื่นที่มีผลใช้บังคับอยู่หรือไม่ </label><br />
+                                <input type="radio" name="IsAnotherPolicy" value="Y">ใช่
+                                <input type="radio" name="IsAnotherPolicy" value="N" checked="checked">ไม่ใช่
+                            </p>
+                        </div>
+                    </div>
+
+                    <h4 class="mb-3">รายละเอียดของผู้กรณี (หากมี)</h4>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="lossPrice">ชื่อคู่กรณี</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="nameKorany">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="causeLossDetail">เบอร์โทรศัพท์</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="phoneKorany">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="nameInsur">ชื่อบริษัทประกันภัย</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="nameInsuredCompany">
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="mb-3">เอกสารประกอบการพิจารณาค่าสินไหมทดแทน</h4>
+                    <label>หนังสือเรียกร้องค่าสินไหมทดแทน</label>
+                    <div class="custom-file">
+                        <br>
+                        <input type="file" class="custom-file-input" id="customFile" multiple="">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                    <label>กรมธรรม์ประกันภัย</label>
+                    <div class="custom-file">
+                        <br>
+                        <input type="file" class="custom-file-input" id="customFile2" multiple="">
+                        <label class="custom-file-label" for="customFile2">Choose file</label>
+                    </div>
+                    <label>ภาพถ่ายความสูญเสียหรือความเสียหายของทรัพย์สินที่เอาประกันภัย</label>
+                    <div class="custom-file">
+                        <br>
+                        <input type="file" class="custom-file-input" id="customFile3" multiple="">
+                        <label class="custom-file-label" for="customFile3">Choose file</label>
+                    </div>
+                    <label>สำเนาใบแจ้งความเพื่อดำเนินคดี (ในกรณีเหตุโจรกรรม/ได้รับความเสียหายจากบุคคลภายนอก)</label>
+                    <div class="custom-file">
+                        <br>
+                        <input type="file" class="custom-file-input" id="customFile4" multiple="">
+                        <label class="custom-file-label" for="customFile4">Choose file</label>
+                    </div>
+                    <label>ค่าใช้จ่ายในการซ่อมแซม/ใบเสนอราคาการซ่อมแซม</label>
+                    <div class="custom-file">
+                        <br>
+                        <input type="file" class="custom-file-input" id="customFile5" multiple="">
+                        <label class="custom-file-label" for="customFile5">Choose file</label>
+                    </div>
+                    <label>สำเนาบัตรประจำตัวประชาชน</label>
+                    <div class="custom-file">
+                        <br>
+                        <input type="file" class="custom-file-input" id="customFile6" multiple="">
+                        <label class="custom-file-label" for="customFile6">Choose file</label>
+                    </div>
+                    <label>สำเนาทะเบียนบ้าน</label>
+                    <div class="custom-file">
+                        <br>
+                        <input type="file" class="custom-file-input" id="customFile7" multiple="">
+                        <label class="custom-file-label" for="customFile7">Choose file</label>
+                    </div>
+                    <label>อัพโหลดไฟล์เอกสารอื่นๆ</label>
+                    <div class="custom-file">
+                        <br>
+                        <input type="file" class="custom-file-input" id="customFile8" multiple="">
+                        <label class="custom-file-label" for="customFile8">Choose file</label>
+                    </div>
+
+
+                    <br />
+                    <h4 class="mb-3">เงื่อนไขข้อตกลง</h4>
+                    <div class="row">
+                        <div class="">
+                            <label class=""> ข้าพเจ้าตกลงว่าบรรดาการกระทำต่าง ๆ ที่ทำขึ้นบนระบบอิเล็กทรอนิกส์ ให้ถือว่าเป็นการทำธุรกรรมทางอิเล็กทรอนิกส์ ซึ่งอยู่ภายใต้กฎหมายตามพระราชบัญญัติว่าด้วยธุรกรรมทางอิเล็กทรอนิกส์ พ.ศ. 2544 และภายใต้บังคับของกฎหมายที่เกี่ยวข้อง ที่มีอยู่ในขณะนี้ หรือที่จะมีต่อไปในภายหน้า ทั้งนี้หากเกิดความเสียหายใดๆ โดยหนังสือฉบับนี้ข้าพเจ้าขอรับรองว่าข้าพเจ้าได้ตรวจสอบข้อมูลที่บันทึกอย่างละเอียดตามความรู้และความเข้าใจของข้าพเจ้าอย่างดีที่สุดแล้วว่า ข้อมูลดังกล่าวเป็นความจริง ถูกต้อง และครบถ้วนสมบูรณ์ทุกประการ </label>
+                        </div>
+                        <br />
+                        <div class=""> ** ข้อควรระวัง : การเจตนาทำให้ทรัพย์สินที่ทำประกันภัยเกิดความเสียหายและการแจ้งเรียกร้องประกันภัยเป็นเท็จ เป็นความผิดตามประมวลกฎหมายอาญา </div>
+                        <br />
+                        <br />
+                        <p>
+                            <input type="checkbox" name="agree" id="agree" value="0">
+                            <label style="display:inline; float:none" for="agree">ข้าพเจ้ายืนยันว่าข้อมูลนี้เป็นความจริงทุกประการและตกลงยอมรับในเงื่อนไขด้านบน</label>
+                        </p>
+                    </div>
+
+
+                    <br>
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block btnForm" id="submitButton" type="submit" href="/GeneralClaimCustomer/Index">ส่งแบบฟอร์ม</button>
+                    <br />
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    @*<script src="~/js/jqBootstrapValidation.js"></script>
+        <script src="~/js/contact_me.js"></script>*@
+
+    <!-- Custom scripts for this template -->
+    @*<script src="~/js/freelancer.min.js"></script>*@
+
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.btnForm').click(function () {
+            if ($('#agree').is(':checked')) {
+                alert('chk')
+                SendForm();
+            };
+
+        });
+    });
+
+
+    function SendForm() {
+        $.ajax(
+            {
+                type: "POST",
+                url: '/GeneralClaimCustomer/Create',
+                data: {
+                    //date: $('#date').val(),
+                    //incidentDate: $('#incidentDate').val(),
+                    //timeIncidentDate: $('#timeIncidentDate').val(),
+                    //nameClaim: $('#nameClaim').val(),
+                    //phoneClaim: $('#phoneClaim').val(),
+                    //emailClaim: $('#emailClaim').val(),
+                    //nameContact: $('#nameContact').val(),
+                    //phoneContact: $('#phoneContact').val(),
+                    //emailContact: $('#emailContact').val(),
+                    //insuranceNo: $('#insuranceNo').val(),
+                    //place: $('#place').val(),
+                    //soi: $('#soi').val(),
+                    //road: $('#road').val(),
+                    //province: $('#province').val(),
+                    //typeHouse: $('#typeHouse').val(),
+                    //causeIncident: $('#causeIncident').val(),
+                    //causeIncidentDetail: $('#causeIncidentDetail').val(),
+                    //incidentPrice: $('#incidentPrice').val(),
+                    //typeHouse: $('#typeHouse').val(),
+                    //typeHouse: $('#typeHouse').val(),
+                    //typeHouse: $('#typeHouse').val(),
+                    //typeHouse: $('#typeHouse').val(),
+                    //typeHouse: $('#typeHouse').val(),
+                },
+                success: function (result) {
+                    alert(1)
+                    window.location.href = '@Url.Action("Index", "GeneralClaimCustomer")';
+                }
+            })
+
+    }
+</script>
+
+
